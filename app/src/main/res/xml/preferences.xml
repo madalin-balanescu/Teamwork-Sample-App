@@ -1,0 +1,26 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="@string/permissions">
+        <SwitchPreferenceCompat
+            app:key="administrator"
+            app:summary="@string/is_this_user_an_administrator"
+            app:title="@string/administrator" />
+
+        <SwitchPreferenceCompat
+            app:key="projects"
+            app:summary="@string/can_add_projects"
+            app:title="@string/projects" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/preferences">
+        <SwitchPreferenceCompat
+            app:key="email_notification"
+            app:title="@string/email_notifications" />
+
+        <SwitchPreferenceCompat
+            app:key="preview_files"
+            app:title="@string/can_preview_files" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
