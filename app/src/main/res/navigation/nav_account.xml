@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_account"
     app:startDestination="@+id/navigation_account"
+    tools:ignore="UnusedNavigation"
     tools:layout="@layout/fragment_myaccount">
 
     <fragment

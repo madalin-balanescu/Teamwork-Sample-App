@@ -99,7 +99,7 @@ class MyAccountFragment : Fragment() {
     }
 
     private fun getAccount() {
-        if (NetworkValidationUtils.isNetworkAvailable(context)) {
+        if (!NetworkValidationUtils.isNetworkAvailable(context)) {
             progressBar.visibility = View.VISIBLE
             myaccountViewModel.getAccount()
         } else {

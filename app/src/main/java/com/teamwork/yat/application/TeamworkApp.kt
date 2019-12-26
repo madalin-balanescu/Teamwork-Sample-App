@@ -34,7 +34,7 @@ class TeamworkApp : Application(), DomainSharedPreferences {
     }
 
     private fun createDomainEntity(): Domain {
-        var domainEntity = Domain()
+        val domainEntity = Domain()
         domainEntity.environment = BuildConfig.BASE_URL
         domainEntity.buildConfigDebug = BuildConfig.DEBUG
         return domainEntity

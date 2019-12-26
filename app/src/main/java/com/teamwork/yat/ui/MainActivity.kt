@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     private var currentNavController: LiveData<NavController>? = null
-    private val ANIMATION_BAR_DURATION: Long = 0
+    private val animationBarDuration: Long = 0
     private lateinit var bottomNavigationView: BottomNavigationView
 
     private lateinit var mainViewModel: MainViewModel
@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
             visibility = View.VISIBLE
             animate()
                 .alpha(1f)
-                .duration = ANIMATION_BAR_DURATION
+                .duration = animationBarDuration
         }
     }
 
@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity() {
                 animate()
                     .alpha(0f)
                     .withEndAction { visibility = View.GONE }
-                    .duration = ANIMATION_BAR_DURATION
+                    .duration = animationBarDuration
             }
         }
     }

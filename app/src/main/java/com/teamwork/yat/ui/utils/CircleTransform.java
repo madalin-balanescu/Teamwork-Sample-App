@@ -11,7 +11,7 @@ import com.squareup.picasso.Transformation;
 
 public class CircleTransform implements Transformation {
 
-    boolean mCircleSeparator = false;
+    private boolean mCircleSeparator = false;
 
     public CircleTransform(){
     }

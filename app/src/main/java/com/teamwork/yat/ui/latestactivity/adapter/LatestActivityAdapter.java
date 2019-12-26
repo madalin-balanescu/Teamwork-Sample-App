@@ -13,12 +13,12 @@ import com.teamwork.yat.ui.latestactivity.adapter.viewholders.LatestItemViewHold
 
 import java.util.List;
 
-public class LatestActivityAdapter<T extends Object> extends RecyclerView.Adapter {
+public class LatestActivityAdapter<T> extends RecyclerView.Adapter {
 
     private static final int VIEW_TYPE_HEADER = 0;
     private static final int VIEW_TYPE_ITEM = 1;
 
-    private List<T> latestActivityListItems;
+    private final List<T> latestActivityListItems;
 
     public LatestActivityAdapter(List<T> latestActivityListItems) {
         this.latestActivityListItems = latestActivityListItems;

@@ -24,7 +24,7 @@ class TeamworkNetwork private constructor(
     private var activityServices: ActivityServices
     private var projectsServices: ProjectsServices
 
-    var token: String = ""
+    private var token: String = ""
 
     companion object {
 
@@ -87,7 +87,7 @@ class TeamworkNetwork private constructor(
 
         val interceptorHeader = Interceptor { chain ->
             val request =
-                if (!token.isEmpty()) {
+                if (token.isNotEmpty()) {
                     chain.request().newBuilder()
                         .addHeader(HEADER_ACCEPT, JSON)
                         .addHeader(HEADER_CONTENT_TYPE, JSON)

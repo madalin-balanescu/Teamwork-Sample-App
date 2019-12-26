@@ -9,6 +9,6 @@ import retrofit2.http.GET
 interface AccountServices {
 
     @GET(API_GET_ACCOUNT)
-    fun getAccount(): Deferred<Response<AccountResponse>>
+    fun getAccountAsync(): Deferred<Response<AccountResponse>>
 
 }

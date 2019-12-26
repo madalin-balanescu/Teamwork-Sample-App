@@ -8,14 +8,14 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class AccountController(private val network: TeamworkNetwork) : BaseController(network, null) {
+class AccountController(private val network: TeamworkNetwork) : BaseController() {
 
     fun getAccount(
         success: (data: AccountResponse) -> Unit,
         error: (error: ErrorHandler) -> Unit
     ) {
         CoroutineScope(Dispatchers.IO).launch {
-            var response = apiCall(
+            val response = apiCall(
                 call = { network.getAccountServicesManager().getAccount() },
                 errorHandler = ErrorHandler::class.java
             )

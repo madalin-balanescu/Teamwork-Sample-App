@@ -8,14 +8,14 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ActivityController (private val network: TeamworkNetwork) : BaseController(network, null) {
+class ActivityController(private val network: TeamworkNetwork) : BaseController() {
 
     fun getLatestActivity(
         success: (data: LatestActivityResponse) -> Unit,
         error: (error: ErrorHandler) -> Unit
     ) {
         CoroutineScope(Dispatchers.IO).launch {
-            var response = apiCall(
+            val response = apiCall(
                 call = { network.getActivityServicesManager().getLatestActivity() },
                 errorHandler = ErrorHandler::class.java
             )

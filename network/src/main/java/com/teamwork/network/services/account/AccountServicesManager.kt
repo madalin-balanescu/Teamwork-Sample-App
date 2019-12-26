@@ -6,7 +6,7 @@ import retrofit2.Response
 class AccountServicesManager (private val services: AccountServices) {
 
     suspend fun getAccount(): Response<AccountResponse> {
-        return services.getAccount().await()
+        return services.getAccountAsync().await()
     }
 
 }

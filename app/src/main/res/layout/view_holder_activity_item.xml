@@ -32,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:layout_toLeftOf="@+id/tvDateTime"
+                android:layout_toStartOf="@+id/tvDateTime"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -40,7 +40,8 @@
                     android:id="@+id/ivUserAvatar"
                     android:layout_width="@dimen/user_avatar_size"
                     android:layout_height="@dimen/user_avatar_size"
-                    android:layout_gravity="left"
+                    android:layout_gravity="start"
+                    android:contentDescription="@string/user_avatar"
                     tools:background="@color/colorAccent" />
 
                 <TextView

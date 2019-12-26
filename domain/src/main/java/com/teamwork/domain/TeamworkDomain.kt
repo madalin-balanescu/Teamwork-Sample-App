@@ -23,7 +23,7 @@ class TeamworkDomain private constructor(private val domain: Domain) {
 
     init {
         network = initNetwork()
-        domainControllers = DomainControllers(network, this)
+        domainControllers = DomainControllers(network)
     }
 
 

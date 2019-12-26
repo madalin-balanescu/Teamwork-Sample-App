@@ -6,8 +6,7 @@ import com.teamwork.domain.controllers.ProjectsController
 import com.teamwork.network.TeamworkNetwork
 
 class DomainControllers(
-    private val network: TeamworkNetwork,
-    private val domain: TeamworkDomain
+    private val network: TeamworkNetwork
 ) {
 
     lateinit var accountController: AccountController

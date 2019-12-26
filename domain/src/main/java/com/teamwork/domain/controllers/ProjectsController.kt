@@ -8,7 +8,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ProjectsController(private val network: TeamworkNetwork) : BaseController(network, null) {
+class ProjectsController(private val network: TeamworkNetwork) : BaseController() {
 
 
     fun getProjects(
@@ -16,7 +16,7 @@ class ProjectsController(private val network: TeamworkNetwork) : BaseController(
         error: (error: ErrorHandler) -> Unit
     ) {
         CoroutineScope(Dispatchers.IO).launch {
-            var response = apiCall(
+            val response = apiCall(
                 call = { network.getProjectsServicesManager().getProjects() },
                 errorHandler = ErrorHandler::class.java
             )
@@ -24,24 +24,6 @@ class ProjectsController(private val network: TeamworkNetwork) : BaseController(
             when (response) {
                 is ErrorHandler -> error(response)
                 is AllProjectsResponse -> success(response)
-            }
-        }
-    }
-
-    fun getSingleProject(
-        id: Int,
-        success: (data: Any) -> Unit,
-        error: (error: ErrorHandler) -> Unit
-    ) {
-        CoroutineScope(Dispatchers.IO).launch {
-            var response = apiCall(
-                call = { network.getProjectsServicesManager().getSingleProject(id) },
-                errorHandler = ErrorHandler::class.java
-            )
-
-            when (response) {
-                is ErrorHandler -> error(response)
-                is Any -> success(response)
             }
         }
     }

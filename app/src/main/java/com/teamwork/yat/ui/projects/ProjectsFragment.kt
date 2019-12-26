@@ -74,7 +74,7 @@ class ProjectsFragment : Fragment(), ItemRowClickListener {
                 for (item in projects) {
                     if (item != null) {
 
-                        var projectItem = ProjectListItem()
+                        val projectItem = ProjectListItem()
 
                         if (item.company != null && !item.company!!.name.isNullOrEmpty()) {
                             projectItem.companyName = item.company!!.name
@@ -110,7 +110,7 @@ class ProjectsFragment : Fragment(), ItemRowClickListener {
     }
 
     private fun getProjects() {
-        if (NetworkValidationUtils.isNetworkAvailable(context)) {
+        if (!NetworkValidationUtils.isNetworkAvailable(context)) {
             progressBar.visibility = View.VISIBLE
             projectsViewModel.getProjects()
         } else {

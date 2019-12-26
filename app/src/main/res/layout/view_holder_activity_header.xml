@@ -19,7 +19,8 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_more_vert_black_24dp" />
+            android:background="@drawable/ic_more_vert_black_24dp"
+            android:contentDescription="@string/more_buttons" />
 
         <TextView
             android:id="@+id/tvName"
@@ -36,7 +37,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:layout_marginLeft="@dimen/normal_margin_sides"
+        android:layout_marginStart="@dimen/normal_margin_sides"
         android:background="@android:color/darker_gray" />
 
 </LinearLayout>

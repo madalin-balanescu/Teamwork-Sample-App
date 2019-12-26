@@ -4,12 +4,11 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.teamwork.model.Empty
 import com.teamwork.model.ErrorHandler
 import com.teamwork.network.Result
-import com.teamwork.network.TeamworkNetwork
 import retrofit2.HttpException
 import retrofit2.Response
 import java.io.IOException
 
-open class BaseController(private val network: TeamworkNetwork, private val domain: TeamworkDomain?) {
+open class BaseController {
 
     suspend fun <T : Any, Z : Any> apiCall(
         call: suspend () -> Response<T>,
@@ -19,41 +18,42 @@ open class BaseController(private val network: TeamworkNetwork, private val doma
         try {
             val result = apiResult(call, errorHandler)
 
-            var data: Any? = null
+            val data: Any?
 
-            when (result) {
+            data = when (result) {
                 is Result.Success ->
-                    data = result.data
+                    result.data
                 is Result.Error -> {
-                    data = result.exception
+                    result.exception
                 }
             }
 
             return data
         } catch (e: HttpException) {
-            return createNetworkError(e.message.toString())
+            return createNetworkError()
         } catch (e: IOException) {
-            return createNetworkError(e.message.toString())
+            return createNetworkError()
         } catch (e: Throwable) {
-            return createNetworkError(e.message.toString())
+            return createNetworkError()
         }
 
     }
 
-    private fun createNetworkError(errorName: String): ErrorHandler {
+    private fun createNetworkError(): ErrorHandler {
         return ErrorHandler()
     }
 
 
+    @Suppress("BlockingMethodInNonBlockingContext")
     private suspend fun <T : Any, Z : Any> apiResult(
         call: suspend () -> Response<T>,
         errorHandler: Class<Z>
-    ): Result<T, Z> {
+    ): Result<Any, Any> {
         val response = call.invoke()
         try {
             if (response.isSuccessful) {
                 return if (response.body() == null) {
-                    Result.Success(Empty() as T)
+                    Result.Success(Empty())
                 } else {
                     Result.Success(response.body()!!)
                 }
@@ -68,11 +68,11 @@ open class BaseController(private val network: TeamworkNetwork, private val doma
 
                 return Result.Error(mResponse)
             } else {
-                var error = response.errorBody()!!.string()
-                Result.Error(error as Z)
+                val error = response.errorBody()!!.string()
+                Result.Error(error)
             }
         } catch (exception: Exception) {
-            return Result.Error(Empty() as Z)
+            return Result.Error(Empty())
         }
     }
 }

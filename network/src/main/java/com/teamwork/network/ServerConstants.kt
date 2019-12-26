@@ -4,7 +4,6 @@ const val HEADER_ACCEPT = "Accept"
 const val HEADER_CONTENT_TYPE = "Content-Type"
 const val JSON = "application/json"
 const val AUTHORIZATION = "Authorization"
-const val BASIC = "Basic"
 
 const val ID = "id"
 

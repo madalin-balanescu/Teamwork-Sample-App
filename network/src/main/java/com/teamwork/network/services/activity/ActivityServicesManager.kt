@@ -6,7 +6,7 @@ import retrofit2.Response
 class ActivityServicesManager(private val services: ActivityServices) {
 
     suspend fun getLatestActivity(): Response<LatestActivityResponse> {
-        return services.getLatestActivity().await()
+        return services.getLatestActivityAsync().await()
     }
 
 }

@@ -34,7 +34,7 @@ class LatestActivityFragment : Fragment() {
 
     private var activityList = mutableListOf<Any>()
 
-    var sdf: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ENGLISH)
+    private var sdf: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ENGLISH)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -78,12 +78,12 @@ class LatestActivityFragment : Fragment() {
                 for (item in activity) {
                     if (item != null) {
 
-                        var latestActivityListItem = LatestActivityListItem()
+                        val latestActivityListItem = LatestActivityListItem()
 
                         if (!item.projectName.isNullOrEmpty()) {
                             latestActivityListItem.projectName = item.projectName
 
-                            if (latestHeader.isNullOrEmpty()) {
+                            if (latestHeader.isEmpty()) {
                                 latestHeader = item.projectName!!
                                 activityList.add(latestHeader)
                             } else if (item.projectName != latestHeader) {
@@ -110,7 +110,7 @@ class LatestActivityFragment : Fragment() {
 
                         if (!item.datetime.isNullOrEmpty()) {
                             try {
-                                var date = sdf.parse(item.datetime!!)
+                                val date = sdf.parse(item.datetime!!)
                                 latestActivityListItem.dateTime = date.time
                             } catch (e: Exception) {
                                 latestActivityListItem.dateTime = null
@@ -133,7 +133,7 @@ class LatestActivityFragment : Fragment() {
     }
 
     private fun getLatestActivity() {
-        if (NetworkValidationUtils.isNetworkAvailable(context)) {
+        if (!NetworkValidationUtils.isNetworkAvailable(context)) {
             progressBar.visibility = View.VISIBLE
             latestActivityViewModel.getLatestActivity()
         } else {

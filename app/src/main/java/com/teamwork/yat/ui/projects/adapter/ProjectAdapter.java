@@ -13,10 +13,10 @@ import com.teamwork.yat.ui.projects.adapter.viewholders.ProjectItemViewHolder;
 
 import java.util.List;
 
-public class ProjectAdapter<T extends Object> extends RecyclerView.Adapter {
+public class ProjectAdapter<T> extends RecyclerView.Adapter {
 
-    private List<T> projectListItems;
-    private ItemRowClickListener itemRowClickListener;
+    private final List<T> projectListItems;
+    private final ItemRowClickListener itemRowClickListener;
 
     private static final int VIEW_TYPE_HEADER = 0;
     private static final int VIEW_TYPE_ITEM = 1;

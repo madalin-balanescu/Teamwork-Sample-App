@@ -15,4 +15,8 @@
     <string name="permissions">Permissions</string>
     <string name="preferences">Preferences</string>
     <string name="not_developed_yet">Functionality not developed yet!</string>
+    <string name="more_buttons">More buttons</string>
+    <string name="user_avatar">User avatar</string>
+    <string name="star_icon">Star icon</string>
+    <string name="info_button">Info button</string>
 </resources>

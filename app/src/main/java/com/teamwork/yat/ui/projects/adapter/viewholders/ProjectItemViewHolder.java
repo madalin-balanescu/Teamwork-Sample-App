@@ -53,7 +53,7 @@ public class ProjectItemViewHolder extends RecyclerView.ViewHolder {
     private ItemRowClickListener itemRowClickListener;
     private ProjectListItem projectListItem;
 
-    private String[] usersAvatars = {"https://s3.amazonaws.com/TWFiles/349705/userAvatar/tf_C21F3016-CD19-C60F-E82B23120C506FEE.Tac_the_Psychotic_Cat.jpg",
+    private final String[] usersAvatars = {"https://s3.amazonaws.com/TWFiles/349705/userAvatar/tf_C21F3016-CD19-C60F-E82B23120C506FEE.Tac_the_Psychotic_Cat.jpg",
             "https://s3.amazonaws.com/TWFiles/349705/userAvatar/tf_60D05E04-FB67-7583-F8AD89B08240F134.181295_551377581579663_1606496645_n.jpg",
             "https://s3.amazonaws.com/TWFiles/349705/userAvatar/twia_4c1367ef2d41f1e590fe3819470ec7a9.png/1fe9b480baf5002dce4d26ec5ba2239f.png"};
 
@@ -102,7 +102,7 @@ public class ProjectItemViewHolder extends RecyclerView.ViewHolder {
                 Chip chip = new Chip(itemView.getContext());
                 chip.setText(tag.getName());
                 chip.setTextColor(Color.WHITE);
-                chip.setCloseIconEnabled(true);
+                chip.setCloseIconVisible(true);
 
                 if (tag.getColor() != null && !tag.getColor().isEmpty()) {
                     int color = Color.parseColor(tag.getColor());
